@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sharifa</title>
+    <style>
+    .d1{
+        width: 25%;
+        height: 300px;
+        background-color:hsl(169, 100%, 50%);
+        border-radius: 50px;
+        margin: auto;
+        margin-top: 90px;
+
+    }
+    form{
+        margin-left: 50px;
+       
+    }
+    input,label,.Login{
+        width: 70%;
+        height: 30px;
+        margin-top: 10px;
+    }
+    .d2{
+        margin-top: 20px;
+    }
+    .Login{
+        color: whitesmoke;
+    }
+    
+    </style>
+
+</head>
+<body>
+
+<div class="d1">
+    <center><h2>LOGIN FORM</h2></center>
+    <form id="LoginForm">
+        <label for="username"> username :</label><br>
+        <input type="text" id="username" name ="username"><br>
+        <label for="password"> password:</label><br>
+        <input type="text" id="password" name ="password"><br>
+        
+        <input type="submit" value="submit">
+
+    </form>
+
+
+
+    <div id="info">
+
+    </div>
+</div>
+</body>
+<script>
+    // to retrive data from local storage
+    console.log("maembe")
+    let LoginForm=document.querySelector("#LoginForm");
+        LoginForm.addEventListener("submit",function(event){
+        event.preventDefault();
+        let username=document.querySelector("#username").value;
+        let password=document.querySelector("#password").value;
+        if(username === "sharifa" & password === "123"){
+            let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+            let contactinfo="";
+            for(i=0;i<contacts.length;i++){
+                contactinfo += "<h1>contact #" + (i+1)+ "</h1>";
+                contactinfo += "<p>name: " + contacts[i].name + "</p>";
+                contactinfo += "<p>adress: " + contacts[i].adress + "</p>";
+                contactinfo += "<p>email: " + contacts[i].email + "</p>";
+            
+            }
+            document.querySelector("#info").innerHTML=contactinfo;
+        }else{
+            alert("invalid username or password");
+        };
+        LoginForm.reset();
+    });
+</script>
+</html>
+

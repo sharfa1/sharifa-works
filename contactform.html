@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sharifa</title>
+    <style>
+    .d1{
+        background: grey;
+        width: 25%;
+        height: 300px;
+        border-radius: 20px;
+        margin: auto;
+        margin-top: 100px;
+
+    }
+    label, input,button{
+        margin-left: 80px;
+        margin-top: 10px;
+        height: 30px;
+    }
+        
+    </style>
+</head>
+<body>
+<div class="d1">
+
+<center><h2>Contact Form</h2></center>
+<div class ="container">
+    <form id="ContactForm">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" required><br>
+        <label for="adress">Adress:</label><br>
+        <input type="text" id="adress" required><br>
+        <label for="email">Email:</label><br>
+        <input type="text" id="email" required><br>
+        <button type="submit">Submit:</button><br>
+        
+    </form>
+
+
+   <li><a href="./login.html">please click here</a></li>
+
+</div>
+</body>
+<script>
+    // Store the data in local storage
+let ContactForm=document.getElementById('ContactForm')
+ContactForm.addEventListener("submit",function(event){
+    event.preventDefault();
+
+    var name = document.querySelector('#name').value;
+    var adress = document.querySelector('#adress').value;
+    var email = document.querySelector('#email').value;
+    
+
+    var contact = {
+        name: name,
+        adress: adress,
+        email: email,
+        
+    };
+    //Save the contact data to local storage
+    let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+    contacts.push(contact);
+    localStorage.setItem('contacts',JSON.stringify(contacts));
+    
+    //Display a succsess message
+    alert('Form submitted')
+    ContactForm.reset();
+
+
+});
+
+   
+
+
+</script>
+
+</html>
+
+
